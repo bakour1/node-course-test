@@ -7,7 +7,8 @@ const shopRoutes = require('./routes/shop');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false })); // for parse req.body object
+app.use(express.static(path.join(__dirname, 'public'))); // for set public ref folder for style and vanilla js
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
