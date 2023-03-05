@@ -42,7 +42,7 @@ const requestHandler = (req, res, next) => {
   res.end();
 };
 
-// module.exports = requestHandler;
+module.exports = requestHandler;
 
 // module.exports = {
 // handler:requestHandler
