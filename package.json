@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/bakour1/node-course-test/issues"
   },
-  "homepage": "https://github.com/bakour1/node-course-test#readme"
+  "homepage": "https://github.com/bakour1/node-course-test#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
 }
