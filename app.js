@@ -1,21 +1,24 @@
-const express = require('express');
 const path = require('path');
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-
+const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false })); // for parse req.body object
-app.use(express.static(path.join(__dirname, 'public'))); // for set public ref folder for style and vanilla js
 
-app.use('/admin', adminRoutes);
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+const adminData = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
-// handle 404 page
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+  res.status(404).render('404', { pageTitle: 'Page Not Found' });
 });
 
 app.listen(3000);
