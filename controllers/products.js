@@ -30,9 +30,9 @@ exports.getCart = (req, res, next) => {
   });
 };
 
-exports.getOrder = (req, res, next) => {
-  res.render('shop/order', {
-    pageTitle: 'order',
-    path: '/order',
+exports.getOrders = (req, res, next) => {
+  res.render('shop/orders', {
+    pageTitle: 'orders',
+    path: '/orders',
   });
 };
