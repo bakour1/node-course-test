@@ -40,6 +40,11 @@ exports.getCart = (req, res, next) => {
     path: '/cart',
   });
 };
+exports.postCart = (req, res, next) => {
+  const prodId = req.body.productId;
+  console.log('####products.js__45================>', prodId);
+  res.redirect('/');
+};
 
 exports.getOrders = (req, res, next) => {
   res.render('shop/orders', {
