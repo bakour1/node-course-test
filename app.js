@@ -14,6 +14,8 @@ const db = require('./util/database');
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+db.execute('SELECT * FROM products');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
