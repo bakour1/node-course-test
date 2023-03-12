@@ -3,9 +3,7 @@ exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true,
+    editing: false,
   });
 };
 
@@ -21,14 +19,17 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
-  console.log(editMode);
   if (!editMode) {
     return res.redirect('/');
   }
-  res.render('admin/edit-product', {
-    pageTitle: 'edit Product',
-    path: '/admin/edit-product',
-    editing: editMode,
+  const prodId = req.params.productId;
+  Product.findById(prodId, (product) => {
+    res.render('admin/edit-product', {
+      pageTitle: 'edit Product',
+      path: '/admin/edit-product',
+      editing: editMode,
+      product: product,
+    });
   });
 };
 
